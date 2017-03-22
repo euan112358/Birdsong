@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "Birdsong_Example.app"
-               BlueprintName = "Birdsong_Example"
-               ReferencedContainer = "container:Birdsong.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "Birdsong_Tests.xctest"
-               BlueprintName = "Birdsong_Tests"
+               BlueprintIdentifier = "52D6DA0E1BF000BD002C0205"
+               BuildableName = "Birdsong.framework"
+               BlueprintName = "Birdsong-macOS"
                ReferencedContainer = "container:Birdsong.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,15 +26,16 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "Birdsong_Tests.xctest"
-               BlueprintName = "Birdsong_Tests"
+               BlueprintIdentifier = "DD7502791C68FCFC006590AF"
+               BuildableName = "Birdsong-macOS Tests.xctest"
+               BlueprintName = "Birdsong-macOS Tests"
                ReferencedContainer = "container:Birdsong.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "Birdsong_Example.app"
-            BlueprintName = "Birdsong_Example"
+            BlueprintIdentifier = "52D6DA0E1BF000BD002C0205"
+            BuildableName = "Birdsong.framework"
+            BlueprintName = "Birdsong-macOS"
             ReferencedContainer = "container:Birdsong.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,22 +62,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "Birdsong_Example.app"
-            BlueprintName = "Birdsong_Example"
+            BlueprintIdentifier = "52D6DA0E1BF000BD002C0205"
+            BuildableName = "Birdsong.framework"
+            BlueprintName = "Birdsong-macOS"
             ReferencedContainer = "container:Birdsong.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "MallocStackLogging"
-            value = ""
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -99,16 +80,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "Birdsong_Example.app"
-            BlueprintName = "Birdsong_Example"
+            BlueprintIdentifier = "52D6DA0E1BF000BD002C0205"
+            BuildableName = "Birdsong.framework"
+            BlueprintName = "Birdsong-macOS"
             ReferencedContainer = "container:Birdsong.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
