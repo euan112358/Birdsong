@@ -2,6 +2,58 @@
 All notable changes to this project will be documented in this file.
 `Starscream` adheres to [Semantic Versioning](http://semver.org/).
 
+#### [3.0.1](https://github.com/daltoniam/Starscream/tree/3.0.1)
+
+Small fixes for 3.0.0.
+
+[#389](https://github.com/daltoniam/Starscream/issues/389)
+[#354](https://github.com/daltoniam/Starscream/issues/354)
+[#386](https://github.com/daltoniam/Starscream/pull/386)
+[#388](https://github.com/daltoniam/Starscream/pull/388)
+[#390](https://github.com/daltoniam/Starscream/pull/390)
+
+#### [3.0.0](https://github.com/daltoniam/Starscream/tree/3.0.0)
+
+Major refactor and Swift 4 support. Additions include:
+
+- Watchos support.
+- Linux support.
+- New Stream class to allow custom socket implementations if desired.
+- Protocol added for mocking (dependency injection).
+- Single framework (no more platform suffixes! e.g. StarscreamOSX, StarscreamTVOS, etc).
+
+[#384](https://github.com/daltoniam/Starscream/issues/384)
+[#377](https://github.com/daltoniam/Starscream/pull/377)
+[#374](https://github.com/daltoniam/Starscream/issues/374)
+[#346](https://github.com/daltoniam/Starscream/issues/346)
+[#335](https://github.com/daltoniam/Starscream/issues/335)
+[#311](https://github.com/daltoniam/Starscream/pull/311)
+[#269](https://github.com/daltoniam/Starscream/issues/269)
+
+#### [2.1.1](https://github.com/daltoniam/Starscream/tree/2.1.1)
+
+Fixes race condition. Updated to avoid SPM dependencies.
+
+[#370](https://github.com/daltoniam/Starscream/issues/370)
+[#367](https://github.com/daltoniam/Starscream/issues/367)
+[#364](https://github.com/daltoniam/Starscream/pull/364)
+[#357](https://github.com/daltoniam/Starscream/pull/357)
+[#355](https://github.com/daltoniam/Starscream/pull/355)
+
+#### [2.1.0](https://github.com/daltoniam/Starscream/tree/2.1.0)
+
+Adds WebSocket compression. Also adds advance WebSocket delegate for extra control. Bug Fixes.
+
+[#349](https://github.com/daltoniam/Starscream/pull/349)
+[#344](https://github.com/daltoniam/Starscream/pull/344)
+[#339](https://github.com/daltoniam/Starscream/pull/339)
+[#337](https://github.com/daltoniam/Starscream/pull/337)
+[#334](https://github.com/daltoniam/Starscream/issues/334)
+[#333](https://github.com/daltoniam/Starscream/pull/333)
+[#319](https://github.com/daltoniam/Starscream/issues/319)
+[#309](https://github.com/daltoniam/Starscream/issues/309)
+[#329](https://github.com/daltoniam/Starscream/issues/329)
+
 #### [2.0.4](https://github.com/daltoniam/Starscream/tree/2.0.4)
 
 SSL Pinning fix by Giuliano Galea as reported by Lukas Futera of [Centralway](https://www.centralway.com/de/).

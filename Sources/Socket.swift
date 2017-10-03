@@ -152,47 +152,82 @@ public final class Socket {
 }
 
 extension Socket: WebSocketDelegate {
+	public func websocketDidConnect(socket: WebSocketClient) {
+		onConnect?()
+		queueHeartbeat()
+	}
+	
+	public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+		onDisconnect?(error as NSError?)
+		
+		// Reset state.
+		awaitingResponses.removeAll()
+		channels.removeAll()
+	}
+	
+	public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+		if let data = text.data(using: String.Encoding.utf8),
+			let response = Response(data: data) {
+			defer {
+				awaitingResponses.removeValue(forKey: response.ref)
+			}
+			
+			log("Received message: \(response.payload)")
+			
+			if let push = awaitingResponses[response.ref] {
+				push.handleResponse(response)
+			}
+			
+			channels[response.topic]?.received(response)
+		} else {
+			fatalError("Couldn't parse response: \(text)")
+		}
+	}
+	
+	public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+		log("Received data: \(data)")
+	}
+	
     
-    // MARK: - WebSocketDelegate
-    
-    public func websocketDidConnect(socket: WebSocket) {
-        log("Connected to: \(socket.currentURL)")
-        onConnect?()
-        queueHeartbeat()
-    }
-    
-    public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-        log("Disconnected from: \(socket.currentURL)")
-        onDisconnect?(error)
-        
-        // Reset state.
-        awaitingResponses.removeAll()
-        channels.removeAll()
-    }
-    
-    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        
-        if let data = text.data(using: String.Encoding.utf8),
-            let response = Response(data: data) {
-            defer {
-                awaitingResponses.removeValue(forKey: response.ref)
-            }
-            
-            log("Received message: \(response.payload)")
-            
-            if let push = awaitingResponses[response.ref] {
-                push.handleResponse(response)
-            }
-            
-            channels[response.topic]?.received(response)
-        } else {
-            fatalError("Couldn't parse response: \(text)")
-        }
-    }
-    
-    public func websocketDidReceiveData(socket: WebSocket, data: Data) {
-        log("Received data: \(data)")
-    }
+//    // MARK: - WebSocketDelegate
+//
+//    public func websocketDidConnect(socket: WebSocket) {
+//        onConnect?()
+//        queueHeartbeat()
+//    }
+//
+//    public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+//        log("Disconnected from: \(socket.currentURL)")
+//        onDisconnect?(error)
+//
+//        // Reset state.
+//        awaitingResponses.removeAll()
+//        channels.removeAll()
+//    }
+//
+//    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+//
+//        if let data = text.data(using: String.Encoding.utf8),
+//            let response = Response(data: data) {
+//            defer {
+//                awaitingResponses.removeValue(forKey: response.ref)
+//            }
+//
+//            log("Received message: \(response.payload)")
+//
+//            if let push = awaitingResponses[response.ref] {
+//                push.handleResponse(response)
+//            }
+//
+//            channels[response.topic]?.received(response)
+//        } else {
+//            fatalError("Couldn't parse response: \(text)")
+//        }
+//    }
+//
+//    public func websocketDidReceiveData(socket: WebSocket, data: Data) {
+//        log("Received data: \(data)")
+//    }
 }
 
 // MARK: - Logging
