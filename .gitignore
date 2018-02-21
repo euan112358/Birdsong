@@ -54,6 +54,8 @@ playground.xcworkspace
 
 Carthage/*
 
+*.framework.zip
+
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
