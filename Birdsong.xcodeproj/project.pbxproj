@@ -22,6 +22,8 @@
 		429CA56C2043FFBC007BCBF6 /* Birdsong.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* Birdsong.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		429CA57020440038007BCBF6 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423D17F41EC9A3A7001EC2CD /* Starscream.framework */; };
 		429CA57120440038007BCBF6 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 423D17F41EC9A3A7001EC2CD /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		429CA57B20453241007BCBF6 /* ChannelListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429CA57A20453241007BCBF6 /* ChannelListener.swift */; };
+		429CA57C20453241007BCBF6 /* ChannelListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429CA57A20453241007BCBF6 /* ChannelListener.swift */; };
 		52D6D9871BEFF229002C0205 /* Birdsong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* Birdsong.framework */; };
 		8933C78E1EB5B82C000D00A4 /* BirdsongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* BirdsongTests.swift */; };
 		8933C78F1EB5B82C000D00A4 /* BirdsongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* BirdsongTests.swift */; };
@@ -90,6 +92,7 @@
 		4272D0372043FB6500CA4C79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4272D03A2043FB6500CA4C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4272D03C2043FB6600CA4C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		429CA57A20453241007BCBF6 /* ChannelListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListener.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* Birdsong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Birdsong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* Birdsong-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Birdsong-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9E21BEFFF6E002C0205 /* Birdsong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Birdsong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +227,7 @@
 				423D17EB1EC9A2DF001EC2CD /* Presence.swift */,
 				423D17EC1EC9A2DF001EC2CD /* Push.swift */,
 				423D17ED1EC9A2DF001EC2CD /* Response.swift */,
+				429CA57A20453241007BCBF6 /* ChannelListener.swift */,
 				423D17EE1EC9A2DF001EC2CD /* Socket.swift */,
 			);
 			path = Sources;
@@ -467,7 +471,7 @@
 					};
 					52D6DA0E1BF000BD002C0205 = {
 						CreatedOnToolsVersion = 7.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0920;
 					};
 					DD7502791C68FCFC006590AF = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -583,6 +587,7 @@
 				423D17F21EC9A2DF001EC2CD /* Response.swift in Sources */,
 				423D17F01EC9A2DF001EC2CD /* Presence.swift in Sources */,
 				423D17F31EC9A2DF001EC2CD /* Socket.swift in Sources */,
+				429CA57B20453241007BCBF6 /* ChannelListener.swift in Sources */,
 				423D17F11EC9A2DF001EC2CD /* Push.swift in Sources */,
 				423D17EF1EC9A2DF001EC2CD /* Channel.swift in Sources */,
 			);
@@ -614,6 +619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429CA57C20453241007BCBF6 /* ChannelListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,6 +1032,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1041,6 +1048,7 @@
 				PRODUCT_NAME = Birdsong;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1049,6 +1057,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1072,6 +1081,7 @@
 		DD7502831C68FCFC006590AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Configs/BirdsongTests.plist;
@@ -1087,6 +1097,7 @@
 		DD7502841C68FCFC006590AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Configs/BirdsongTests.plist;

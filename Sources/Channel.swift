@@ -8,6 +8,11 @@
 
 import Foundation
 
+class PresenceEventsListener: ChannelListener {
+	let events = ["presence_state", "presence_diff"]
+	var callbacks: [String : (Response) -> Void] = [:]
+}
+
 open class Channel {
 	// MARK: - Properties
 
@@ -18,8 +23,12 @@ open class Channel {
 
 	fileprivate(set) open var presence: Presence
 
-	fileprivate var callbacks: [String: (Response) -> ()] = [:]
-	fileprivate var presenceStateCallback: ((Presence) -> ())?
+//	fileprivate var callbacks: [String: (Response) -> ()] = [:]
+//	fileprivate var presenceStateCallback: ((Presence) -> ())?
+
+	let presenceEventsListener = PresenceEventsListener()
+	var channelListeners: [ChannelListener] = []
+	var presenceListeners: [PresenceListener] = []
 
 	init(socket: Socket, topic: String, params: Socket.Payload = [:]) {
 		self.socket = socket
@@ -28,15 +37,31 @@ open class Channel {
 		self.state = .Closed
 		self.presence = Presence()
 
-		// Register presence handling.
-		on("presence_state") { [weak self] (response) in
+
+		self.presenceEventsListener.callbacks["presence_state"] = {
+			[weak self] response in
 			self?.presence.sync(response)
-			guard let presence = self?.presence else {return}
-			self?.presenceStateCallback?(presence)
+			guard let presence = self?.presence else {
+				return
+			}
+			self?.presenceListeners.forEach{ $0.presenceCallbacks.forEach{ $0(presence) } }
 		}
-		on("presence_diff") { [weak self] (response) in
+
+		self.presenceEventsListener.callbacks["presence_diff"] = {
+			[weak self] response in
 			self?.presence.sync(response)
 		}
+
+//		// Register presence handling.
+//		on("presence_state") { [weak self] (response) in
+//			self?.presence.sync(response)
+//			guard let presence = self?.presence else {return}
+//			self?.channelListeners.forEach { $0.presenceStateCallback?(presence) }
+//			self?.presenceStateCallback?(presence)
+//		}
+//		on("presence_diff") { [weak self] (response) in
+//			self?.presence.sync(response)
+//		}
 	}
 
 	// MARK: - Control
@@ -55,7 +80,7 @@ open class Channel {
 		state = .Leaving
 
 		return send(Socket.Event.Leave, payload: [:])?.receive("ok", callback: { response in
-			self.callbacks.removeAll()
+//			self.callbacks.removeAll()
 			self.presence.onJoin = nil
 			self.presence.onLeave = nil
 			self.presence.onStateChange = nil
@@ -73,23 +98,15 @@ open class Channel {
 	// MARK: - Raw events
 
 	func received(_ response: Response) {
-		if let callback = callbacks[response.event] {
-			callback(response)
+		if self.presenceEventsListener.events.contains(response.event) {
+
 		}
-	}
 
-	// MARK: - Callbacks
-
-	@discardableResult
-	open func on(_ event: String, callback: @escaping (Response) -> ()) -> Self {
-		callbacks[event] = callback
-		return self
-	}
-
-	@discardableResult
-	open func onPresenceUpdate(_ callback: @escaping (Presence) -> ()) -> Self {
-		presenceStateCallback = callback
-		return self
+		channelListeners.forEach { (listener) in
+			if let callback = listener.callbacks[response.event] {
+				callback(response)
+			}
+		}
 	}
 
 	// MARK: - States
