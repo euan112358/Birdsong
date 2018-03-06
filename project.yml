@@ -1,39 +1,38 @@
-name: PINCacheTexture
+name: Birdsong
 options:
   deploymentTarget:
-    iOS: 10.0
+    iOS: 8.0
 targets:
-  PINCacheTexture:
+  Birdsong:
     type: framework
     platform: iOS
     sources: Sources
     scheme:
       gatherCoverageData: true
       testTargets:
-        - PINCacheTextureTests
+        - BirdsongTests
     dependencies:
-      - carthage: AsyncDisplayKit
-      - carthage: PINCache 
+      - carthage: Starscream
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.rmalhotra.pincachetexture
-        INFOPLIST_FILE: Configs/PINCacheTexture.plist
-  PINCacheTextureTests:
+        PRODUCT_BUNDLE_IDENTIFIER: com.birdsong.birdsong
+        INFOPLIST_FILE: Configs/Birdsong.plist
+  BirdsongTests:
     type: bundle.unit-test
     platform: iOS
     sources: Tests
     dependencies:
-      - target: PINCacheTexture
+      - target: Birdsong
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.rmalhotra.pincachetexturetests
-        INFOPLIST_FILE: Configs/PINCacheTextureTests.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.birdsong.birdsongtests
+        INFOPLIST_FILE: Configs/BirdsongTests.plist
   Example:
     type: application
     platform: iOS
     sources: Example
     dependencies:
-      - target: PINCacheTexture
+      - target: Birdsong
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.rmalhotra.Example
